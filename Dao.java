@@ -120,6 +120,10 @@ public class Dao {
 				// add user if it doesnt exists inside hashmap
 				if(!(ExistingUserList.containsValue(rowData.get(0)))){
 					System.out.println("New user found, adding to database..");
+
+					// hash password 
+					String hashedPassword = PasswordUtils.hashedPassword(rowData.get(1));
+
 					
 					PreparedStatement addUser = getConnection().prepareStatement("insert into kdomin_users(uname,upass,admin) " + "values(?,?,?)", Statement.RETURN_GENERATED_KEYS);
 					
