@@ -139,7 +139,22 @@ public class Tickets extends JFrame implements ActionListener {
 			
 			String ticketName = JOptionPane.showInputDialog(null, "Enter your name");
 
+			//regex for name
+			String unameP = "^[a-zA-Z]{3,10}]+$";
+			if(!ticketName.matches(unameP)){
+				JOptionPane.showMessageDialog(null, "Name must be only 3-10 characters long");
+				return;
+			}
+
 			String ticketDesc = JOptionPane.showInputDialog(null, "Enter a ticket description");
+
+			//regex for description
+			String descP = "^[a-zA-Z0-9\\s.,!?-]{10,200}+$";
+			if(!ticketName.matches(descP)){
+				JOptionPane.showMessageDialog(null, "Description is only letters, numbers, spaces, and certain punctuation.");
+				return;
+			}
+
 
 			// insert ticket information to database
 
